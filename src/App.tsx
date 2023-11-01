@@ -15,6 +15,9 @@ const App = () => {
 
   return (
     <>
+        <h1 className="text-3xl font-bold underline">
+      Hello world!
+    </h1>
       <Home 
         title='Home Page' 
         description='This is the home page'
