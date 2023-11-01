@@ -12,6 +12,8 @@ const Home = (props : myProps) => {
   const [task, setTask] = useState('');
   const [logged, setLogged] = useState(false);
 
+  const userName = ''
+
   useEffect(() => {
     if (completed) {
         setTask('Congratulations on completing your task!');
@@ -20,6 +22,12 @@ const Home = (props : myProps) => {
 
   return (
     <>
+        {/* Para validar string sempre transforme em booleano usar !! ou Boolean(variavel) */}
+        {!!userName && <h1>Welcome {userName}</h1>}
+        {Boolean(userName) && <h1>Welcome {userName}</h1>}
+
+        {/* Validar objetos utilizar o Object.entries(myObj).length > 0 ou transformar em booleano com !!myObj.prop */}
+
         {logged && <h1>Welcome to the website!</h1>} 
         {!logged && <h1>You are not logged in!</h1>}
 
