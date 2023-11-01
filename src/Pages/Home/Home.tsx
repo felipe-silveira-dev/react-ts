@@ -10,6 +10,7 @@ interface myProps {
 const Home = (props : myProps) => {
   const [completed, setCompleted] = useState(false);
   const [task, setTask] = useState('');
+  const [logged, setLogged] = useState(false);
 
   useEffect(() => {
     if (completed) {
@@ -19,6 +20,11 @@ const Home = (props : myProps) => {
 
   return (
     <>
+        {logged && <h1>Welcome to the website!</h1>} 
+        {!logged && <h1>You are not logged in!</h1>}
+
+        <button onClick={() => setLogged(!logged)}>LogIn</button>
+
         <h1>Todo List</h1>
         <h3>{task}</h3>
         <button onClick={() => setCompleted(true)}>Concluir tarefa!</button>
