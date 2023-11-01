@@ -1,48 +1,52 @@
-import './Home.css'
-import homeImage from '../../assets/971.jpg'
-import { useState, useEffect } from "react"
+import "./Home.css";
+import homeImage from "../../assets/971.jpg";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 interface myProps {
-    title: string,
-    description: string,
+  title: string;
+  description: string;
 }
 
-const Home = (props : myProps) => {
+const Home = (props: myProps) => {
+  let navigate = useNavigate();
   const [completed, setCompleted] = useState(false);
-  const [task, setTask] = useState('');
+  const [task, setTask] = useState("");
   const [logged, setLogged] = useState(false);
 
-  const userName = ''
+  const userName = "";
 
   useEffect(() => {
     if (completed) {
-        setTask('Congratulations on completing your task!');
+      setTask("Congratulations on completing your task!");
     }
-  }, [completed])
+  }, [completed]);
 
   return (
     <>
-        {/* Para validar string sempre transforme em booleano usar !! ou Boolean(variavel) */}
-        {!!userName && <h1>Welcome {userName}</h1>}
-        {Boolean(userName) && <h1>Welcome {userName}</h1>}
+      <Link to="/login">Login</Link>
+      <button onClick={() => navigate("/login")}>Login</button>
 
-        {/* Validar objetos utilizar o Object.entries(myObj).length > 0 ou transformar em booleano com !!myObj.prop */}
+      {/* Para validar string sempre transforme em booleano usar !! ou Boolean(variavel) */}
+      {!!userName && <h1>Welcome {userName}</h1>}
+      {Boolean(userName) && <h1>Welcome {userName}</h1>}
 
-        {logged && <h1>Welcome to the website!</h1>} 
-        {!logged && <h1>You are not logged in!</h1>}
+      {/* Validar objetos utilizar o Object.entries(myObj).length > 0 ou transformar em booleano com !!myObj.prop */}
 
-        <button onClick={() => setLogged(!logged)}>LogIn</button>
+      {logged && <h1>Welcome to the website!</h1>}
+      {!logged && <h1>You are not logged in!</h1>}
 
-        <h1>Todo List</h1>
-        <h3>{task}</h3>
-        <button onClick={() => setCompleted(true)}>Concluir tarefa!</button>
+      <button onClick={() => setLogged(!logged)}>LogIn</button>
 
-        <h1 className='title'>{props.title}</h1>
-        <p className='description'>{props.description}</p>
-        <img src={homeImage} alt="home" className='img' />
+      <h1>Todo List</h1>
+      <h3>{task}</h3>
+      <button onClick={() => setCompleted(true)}>Concluir tarefa!</button>
 
+      <h1 className="title">{props.title}</h1>
+      <p className="description">{props.description}</p>
+      <img src={homeImage} alt="home" className="img" />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
